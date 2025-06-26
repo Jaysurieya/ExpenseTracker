@@ -1,0 +1,216 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  --primary-color: #2563eb;
+  --success-color: #16a34a;
+  --error-color: #dc2626;
+  --warning-color: #f59e0b;
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 1rem;
+}
+
+.expense-container {
+  background-color: var(--card-background);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.expense-item:hover {
+  transform: translateY(-2px);
+}
+
+.expense-item.income {
+  border-left: 4px solid var(--success-color);
+}
+
+.expense-item.expense {
+  border-left: 4px solid var(--error-color);
+}
+
+.expense-item.income .expense-amount {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.expense-item.expense .expense-amount {
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+.expense-form {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  background-color: #f9fafb;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+button {
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+.balance-container {
+  background: linear-gradient(135deg, #1e3a8a 0%, var(--primary-color) 100%);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  color: white;
+}
+
+.currency-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(145deg, #60a5fa 0%, var(--primary-color) 100%);
+  border-radius: 0.75rem;
+  padding: 1.5rem 2rem;
+  min-width: 100px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.currency-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.currency-item .title {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.currency-item .amount {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.currency-item .amount.income {
+  color: var(--success-color);
+}
+
+.currency-item .amount.expense {
+  color: var(--error-color);
+}
+
+.currency-item .amount.balance {
+  color: var(--warning-color);
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.delete-button-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: translateX(10%);
+}
+
+.delete-button-overlay button {
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  width: 100px;
+  padding: 0.5rem;
+  background-color: var(--error-color);
+  color: white;
+  font-weight: 500;
+}
+
+.expense-item:hover .delete-button-overlay {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .expense-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .balance-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .currency-item {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+}
