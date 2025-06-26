@@ -56,4 +56,4 @@ const [amount,SetAmount] = useState(0)
   )
 }
 
-export default ExpenseForm
+export default ExpenseForm;

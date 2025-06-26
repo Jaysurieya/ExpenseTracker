@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Expenceform from './Expenseform.jsx'
+import ExpenseForm from './ExpenseForm.jsx'
 import History from './History.jsx'
 import BalanceContainer from './BalanceContainer.jsx';
 
@@ -10,7 +10,7 @@ const [expense,setExpense]=useState([])
 
 const fetchExpense = async()=>{
   try {
-    const response=await fetch('http://localhost:4000/Expense')
+    const response=await fetch('https://expensetracker-ffgj.onrender.com/Expense')
     const data=await response.json()
     setExpense(data.map(item => ({ ...item, id: item._id })))
     
@@ -24,7 +24,7 @@ useEffect(()=>{
 
 const addExpense=async(title,amount)=>{
   try {
-    const response=await fetch('http://localhost:4000/Expense',{
+    const response=await fetch('https://expensetracker-ffgj.onrender.com/Expense',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({title,amount}),
@@ -43,7 +43,7 @@ const addExpense=async(title,amount)=>{
 
 const deleteExpense = async (id) => {
   try {
-    const response = await fetch(`http://localhost:4000/Expense/${id}`, {
+    const response = await fetch(`https://expensetracker-ffgj.onrender.com/Expense/${id}`, {
       method: 'DELETE',
     });
     if (response.ok) {
@@ -60,7 +60,7 @@ console.log(expense[0])
     <div className='expense-container'>
       <BalanceContainer expense={expense}/>
         <History expense={expense} deleteExpense={deleteExpense}/>
-        <Expenceform addExpense={addExpense}/>
+        <ExpenseForm addExpense={addExpense}/>
     </div>
   )
 }
